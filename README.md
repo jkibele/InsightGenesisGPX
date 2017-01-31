@@ -39,5 +39,142 @@ This will print the following:
                    default because: science.
       --no-metric  Do not convert depths to meters.
 
+## More Detail Than You Probably Really Want
 
-    
+Here's the first part of the gpx file as downloaded from InsightGenesis:
+
+    <gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" creator="Insight Genesis - Navico, Inc" schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+        <metadata>
+            <name>Sonar0000.slg.gpx</name>
+            <author>
+                <name>Navico, Inc</name>
+            </author>
+            <copyright author="2016 - Navico, Inc"/>
+            <link href="http://www.navico.com">
+                <text>Navico, Inc</text>
+            </link>
+            <time>2016-10-13T03:34:08Z</time>
+            <keywords>Insight Genesis, maps</keywords>
+            <depthunits>feet</depthunits>
+            <tempunits>C</tempunits>
+            <directionunits>radians</directionunits>
+            <timeunits>ms</timeunits>
+            <sogunits>kn</sogunits>
+            </metadata>
+        <trk>
+            <name>
+            <![CDATA[ SK2 TRAN1-2.sl2 track ]]>
+            </name>
+            <desc>
+            <![CDATA[ ]]>
+            </desc>
+            <number>1</number>
+            <trkseg>
+                <trkpt lat="-36.2660838100883" lon="174.803030013204">
+                    <sym>Waypoint</sym>
+                    <time>2016-10-12T14:07:38Z</time>
+                    <channel>Primary</channel>
+                    <frequency>200kHz</frequency>
+                    <upperlimit>0</upperlimit>
+                    <lowerlimit>164</lowerlimit>
+                    <depthvalid>T</depthvalid>
+                    <depth>59.339</depth>
+                    <watertempvalid>T</watertempvalid>
+                    <watertemp>16.25</watertemp>
+                    <waterspeedvalid>F</waterspeedvalid>
+                    <waterspeed>0</waterspeed>
+                    <positionvalid>T</positionvalid>
+                    <timeoffset>19</timeoffset>
+                    <speedvalid>F</speedvalid>
+                    <speed>0</speed>
+                    <trackvalid>T</trackvalid>
+                    <track>2.617994</track>
+                    <altitudevalid>F</altitudevalid>
+                    <altitude>0</altitude>
+                    <heading>0</heading>
+                </trkpt>
+                <trkpt lat="-36.2660838100883" lon="174.803030013204">
+                    <sym>Waypoint</sym>
+                    <time>2016-10-12T14:07:38Z</time>
+                    <channel>Primary</channel>
+                    <frequency>200kHz</frequency>
+                    <upperlimit>0</upperlimit>
+                    <lowerlimit>164</lowerlimit>
+                    <depthvalid>T</depthvalid>
+                    <depth>59.339</depth>
+                    <watertempvalid>T</watertempvalid>
+                    <watertemp>16.23001</watertemp>
+                    <waterspeedvalid>F</waterspeedvalid>
+                    <waterspeed>0</waterspeed>
+                    <positionvalid>T</positionvalid>
+                    <timeoffset>109</timeoffset>
+                    <speedvalid>F</speedvalid>
+                    <speed>0</speed>
+                    <trackvalid>T</trackvalid>
+                    <track>2.617994</track>
+                    <altitudevalid>F</altitudevalid>
+                    <altitude>0</altitude>
+                    <heading>0</heading>
+                </trkpt>
+                ...etc, etc, etc...
+
+Notice that the `ele` tags are missing from the track points (`trkpt`). Here's the same gpx as this script writes it out:
+
+    <gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" creator="Insight Genesis - Navico, Inc" schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+      <metadata>
+        <name>Sonar0000.slg.gpx</name>
+        <author>
+          <name>Navico, Inc</name>
+        </author>
+        <copyright author="2016 - Navico, Inc"/>
+        <link href="http://www.navico.com">
+          <text>Navico, Inc</text>
+        </link>
+        <time>2016-10-13T03:34:08Z</time>
+        <keywords>Insight Genesis, maps</keywords>
+        <depthunits>feet</depthunits>
+        <tempunits>C</tempunits>
+        <directionunits>radians</directionunits>
+        <timeunits>ms</timeunits>
+        <sogunits>kn</sogunits>
+      </metadata>
+      <trk>
+        <name>SK2 TRAN1-2.sl2 track</name>
+        <desc></desc>
+        <number>1</number>
+        <trkseg>
+          <trkpt lat="-36.2660838100883" lon="174.803030013204">
+            <sym>Waypoint</sym>
+            <time>2016-10-12T14:07:38Z</time>
+            <channel>Primary</channel>
+            <frequency>200kHz</frequency>
+            <upperlimit>0</upperlimit>
+            <lowerlimit>164</lowerlimit>
+            <depthvalid>T</depthvalid>
+            <depth>59.339</depth>
+            <watertempvalid>T</watertempvalid>
+            <watertemp>16.25</watertemp>
+            <waterspeedvalid>F</waterspeedvalid>
+            <waterspeed>0</waterspeed>
+            <positionvalid>T</positionvalid>
+            <timeoffset>19</timeoffset>
+            <speedvalid>F</speedvalid>
+            <speed>0</speed>
+            <trackvalid>T</trackvalid>
+            <track>2.617994</track>
+            <altitudevalid>F</altitudevalid>
+            <altitude>0</altitude>
+            <heading>0</heading>
+            <ele>-18.0867471348</ele>
+          </trkpt>
+          <trkpt lat="-36.2660838100883" lon="174.803030013204">
+            <sym>Waypoint</sym>
+            <time>2016-10-12T14:07:38Z</time>
+            <channel>Primary</channel>
+            <frequency>200kHz</frequency>
+            <upperlimit>0</upperlimit>
+            <lowerlimit>164</lowerlimit>
+            <depthvalid>
+            ...and so on...
+            
+Now the depth has been converted to meters and copied to the `ele` tag. Now the gpx file can be used with standard GIS software that expects depth (or elevation) to be in the `ele` tag.
